@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Список студентов — Таблица</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">Vorstu — Студенты</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="table-wrap">
+      <div class="table-toolbar">
+        <input id="search" class="search" placeholder="Поиск по имени..." />
+        <div class="controls">
+          <button id="refresh" class="btn">Обновить</button>
+        </div>
+      </div>
+
+      <div class="responsive-table">
+        <table class="styled-table" id="students-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>ФИО</th>
+              <th>Группа</th>
+              <th>Email</th>
+              <th>Телефон</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Пример строк; можно динамически заполнять через JS -->
+            <tr>
+              <td>1</td>
+              <td>Иванов Иван</td>
+              <td>ИТ-101</td>
+              <td>ivanov@example.com</td>
+              <td>+7 900 000-00-01</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Петрова Мария</td>
+              <td>ПР-202</td>
+              <td>petrova@example.com</td>
+              <td>+7 900 000-00-02</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© Vorstu 2025</div>
+  </footer>
+
+  <script src="/js/table.js"></script>
+</body>
+</html>
