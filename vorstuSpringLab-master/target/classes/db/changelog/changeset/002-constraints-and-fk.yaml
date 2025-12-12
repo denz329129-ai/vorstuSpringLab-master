@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-add-constraints-fk
+      author: leha
+      changes:
+        # Внешние ключи для users
+        - addForeignKeyConstraint:
+            baseTableName: users
+            baseColumnNames: password_id
+            constraintName: fk_users_password
+            referencedTableName: passwords
+            referencedColumnNames: id
+
+        # Внешние ключи для students
+        - addForeignKeyConstraint:
+            baseTableName: students
+            baseColumnNames: id
+            constraintName: fk_students_user
+            referencedTableName: users
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: students
+            baseColumnNames: group_id
+            constraintName: fk_students_group
+            referencedTableName: student_group
+            referencedColumnNames: id
+
+        # Аналогично для teachers, admins и teacher_groups...
+        - addForeignKeyConstraint:
+            baseTableName: teachers
+            baseColumnNames: id
+            constraintName: fk_teachers_user
+            referencedTableName: users
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: admins
+            baseColumnNames: id
+            constraintName: fk_admins_user
+            referencedTableName: users
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: teacher_groups
+            baseColumnNames: teacher_id
+            constraintName: fk_teacher_groups_teacher
+            referencedTableName: teachers
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: teacher_groups
+            baseColumnNames: group_id
+            constraintName: fk_teacher_groups_group
+            referencedTableName: student_group
+            referencedColumnNames: id

@@ -1,0 +1,27 @@
+spring:
+  liquibase:
+    enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/StudentsSTP
+    username: postgres
+    password: 0814
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create-drop
+#    show-sql: true
+  data:
+    rest:
+      detection-strategy: annotated
+jwt:
+  secret:
+    access: qBTmv4oXFFR2GwjexDJ4t6fsIUIUhhXqlktXjXdkcyygs8nPVEwMfo29VDRRepYDVV5IkIxBMzr7OEHXEHd37w==
+    refresh: zL1HB3Pch05Avfynovxrf/kpF9O2m4NCWKJUjEp27s9J2jEG3ifiKCGylaZ8fDeoONSTJP/wAzKawB8F9rOMNg==
+
+springdoc:
+  packages-to-scan: dev.vorstu.controllers
+  paths-to-exclude: /actuator/**,/error,/webjars/**,/v3/api-docs/**
+
+#http://localhost:8080/swagger-ui/index.html#/

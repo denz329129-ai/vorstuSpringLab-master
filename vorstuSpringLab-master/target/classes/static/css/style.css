@@ -1,0 +1,39 @@
+:root{
+  --bg:#f6f8fb;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#2563eb;
+  --accent-600:#1e40af;
+  --border:#e6e9ef;
+}
+*{box-sizing:border-box}
+body{font-family:Inter, Roboto, Arial, sans-serif;margin:0;background:var(--bg);color:#111}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.site-header{background:linear-gradient(90deg,var(--accent),var(--accent-600));color:#fff;padding:16px 0}
+.brand{margin:0;font-size:20px;font-weight:600}
+.site-footer{padding:12px 0;text-align:center;color:var(--muted);font-size:13px}
+
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+.table-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:12px}
+.search{padding:8px 12px;border-radius:8px;border:1px solid var(--border);min-width:200px}
+.btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+.btn:hover{background:var(--accent-600)}
+
+.responsive-table{overflow:auto}
+.styled-table{width:100%;border-collapse:collapse;font-size:14px}
+.styled-table thead th{position:sticky;top:0;background:linear-gradient(180deg,#fff,#fafafa);padding:12px 16px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+.styled-table tbody td{padding:12px 16px;border-bottom:1px dashed var(--border);vertical-align:middle}
+.styled-table tbody tr:nth-child(odd){background:transparent}
+.styled-table tbody tr:nth-child(even){background:rgba(37,99,235,0.03)}
+.styled-table tbody tr:hover{background:rgba(37,99,235,0.06)}
+
+/* compact for small screens */
+@media (max-width:640px){
+  .styled-table thead{display:none}
+  .styled-table tbody td{display:block;padding:10px 12px}
+  .styled-table tbody tr{margin-bottom:12px;display:block;background:var(--card);border-radius:8px}
+  .styled-table tbody td:before{content:attr(data-label);font-weight:600;display:block;color:var(--muted);margin-bottom:6px}
+}
+
+/* accessibility focus */
+.styled-table tbody tr:focus-within{outline:2px solid rgba(37,99,235,0.15);border-radius:8px}

@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-base-tables
+      author: leha
+      changes:
+        # Сначала создаем независимые таблицы
+        - createTable:
+            tableName: passwords
+            columns:
+              - column: {name: id, type: BIGSERIAL, constraints: {primaryKey: true, nullable: false}}
+              - column: {name: password, type: VARCHAR(255)}
+
+        - createTable:
+            tableName: student_group
+            columns:
+              - column: {name: id, type: BIGSERIAL, constraints: {primaryKey: true, nullable: false}}
+              - column: {name: group_name, type: VARCHAR(255)}
+
+        # Основная таблица users
+        - createTable:
+            tableName: users
+            columns:
+              - column: {name: id, type: BIGSERIAL, constraints: {primaryKey: true, nullable: false}}
+              - column: {name: username, type: VARCHAR(255)}
+              - column: {name: role, type: VARCHAR(255)}
+              - column: {name: enable, type: BOOLEAN}
+              - column: {name: password_id, type: BIGINT, constraints: {nullable: false}}
+
+        # Таблицы наследников
+        - createTable:
+            tableName: students
+            columns:
+              - column: {name: id, type: BIGINT, constraints: {primaryKey: true, nullable: false}}
+              - column: {name: fio, type: VARCHAR(255)}
+              - column: {name: phone_number, type: VARCHAR(255)}
+              - column: {name: group_id, type: BIGINT}
+
+        - createTable:
+            tableName: teachers
+            columns:
+              - column: {name: id, type: BIGINT, constraints: {primaryKey: true, nullable: false}}
+              - column: {name: fio, type: VARCHAR(255)}
+              - column: {name: phone_number, type: VARCHAR(255)}
+
+        - createTable:
+            tableName: admins
+            columns:
+              - column: {name: id, type: BIGINT, constraints: {primaryKey: true, nullable: false}}
+
+        # Связующая таблица для many-to-many
+        - createTable:
+            tableName: teacher_groups
+            columns:
+              - column: {name: teacher_id, type: BIGINT, constraints: {primaryKey: true, nullable: false}}
+              - column: {name: group_id, type: BIGINT, constraints: {primaryKey: true, nullable: false}}
